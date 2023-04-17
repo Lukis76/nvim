@@ -1,22 +1,11 @@
 local g = vim.g
 local opt = vim.o
 
-
-
 g.mapleader = " "
 g.snippets = "luasnip"
-vim.api.nvim_exec([[
-  augroup highlight_current_line
-    autocmd!
-    autocmd WinEnter,BufEnter * setlocal cursorline
-    autocmd WinLeave,BufLeave * setlocal nocursorline
-  augroup END
-]], false)
--- vim.highlight = {
---    bg = "#09f",
---    fg = "#09f"
---}
 
+opt.cursorline = true
+opt.winbar = "%=%f"
 opt.mouse = false
 opt.number = true
 opt.relativenumber = true
