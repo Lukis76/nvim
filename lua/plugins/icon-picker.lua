@@ -7,3 +7,4 @@ return {
   },
   opts = { disable_legacy_commands = true },
 }
+

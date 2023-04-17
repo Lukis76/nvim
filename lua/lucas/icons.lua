@@ -1,4 +1,4 @@
-return {
+local M = {
   kind = {
     Array = "",
     Boolean = "",
@@ -127,6 +127,7 @@ return {
     TriangleShortArrowLeft = "",
     TriangleShortArrowRight = "",
     TriangleShortArrowUp = "",
+    select = "❯",
   },
   diagnostics = {
     BoldError = "",
@@ -152,3 +153,6 @@ return {
     CircuitBoard = "",
   },
 }
+
+_G.icons = M
+return M

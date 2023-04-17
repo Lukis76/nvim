@@ -10,6 +10,7 @@ return {
 
     autocmd({ "ModeChanged" }, {
       callback = function()
+        local icons = require("lucas.icons")
         local current_mode = vim.fn.mode()
         if current_mode == "n" then
           vim.api.nvim_set_hl(0, "SmoothCursor", { fg = "#8a9baa" })
@@ -25,7 +26,7 @@ return {
           vim.fn.sign_define("smoothcursor", { text = "" })
         elseif current_mode == "i" then
           vim.api.nvim_set_hl(0, "SmoothCursor", { fg = "#668aab" })
-          vim.fn.sign_define("smoothcursor", { text = "" })
+          vim.fn.sign_define("smoothcursor", { text = icons.ui.BoldArrowRight })
         end
       end,
     })
