@@ -26,7 +26,7 @@ return {
         local icons = require("lucas.icons")
         local builtin = require("telescope.builtin")
         builtin.grep = function()
-            local grep = "Grep" .. " " .. icons.ui.select .. " "
+            local grep = "Grep" .. " " .. icons.ui.Select .. " "
             builtin.grep_string({ search = vim.fn.input(grep) })
         end
         vim.keymap.set("n", "<leader>fp", builtin.find_files, {})
@@ -37,8 +37,8 @@ return {
 
         local config = {
             defaults = {
-                prompt_prefix = icons.ui.select .. " ",
-                selection_caret = icons.ui.select .. " ",
+                prompt_prefix = icons.ui.Select .. " ",
+                selection_caret = icons.ui.Select .. " ",
                 winblend = 0,
                 layout_strategy = "horizontal",
                 layout_config = {

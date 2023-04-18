@@ -1,5 +1,5 @@
 return {
-  auto_reload_on_write = false,
+  auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
@@ -11,7 +11,11 @@ return {
   sync_root_with_cwd = true,
   reload_on_bufenter = false,
   respect_buf_cwd = false,
-  on_attach = "default",
+  on_attach = function ()
+        local opts = { remap = false }
+
+        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+  end,
   remove_keymaps = false,
   select_prompts = false,
   view = {
@@ -53,9 +57,9 @@ return {
       enable = false,
       inline_arrows = true,
       icons = {
-        corner = "└",
-        edge = "│",
-        item = "│",
+        corner = icons.ui.LineCorne,
+        edge = icons.ui.LineMiddle,
+        item = icons.ui.LineMiddle,
         none = " ",
       },
     },
@@ -63,7 +67,7 @@ return {
       webdev_colors = true,
       git_placement = "before",
       padding = " ",
-      symlink_arrow = " ➛ ",
+      symlink_arrow = " ".. icons.ui.BoldArrowRight .." ",
       show = {
         file = true,
         folder = true,
@@ -75,8 +79,8 @@ return {
         symlink = icons.ui.FileSymlink,
         bookmark = icons.ui.BookMark,
         folder = {
-          arrow_closed = icons.ui.TriangleShortArrowRight,
-          arrow_open = icons.ui.TriangleShortArrowDown,
+          arrow_closed = icons.ui.ChevronShortRight,
+          arrow_open = icons.ui.ChevronShortDown,
           default = icons.ui.Folder,
           open = icons.ui.FolderOpen,
           empty = icons.ui.EmptyFolder,
