@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    event = "VeryLazy",
     -- Required
     dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },     -- Required
@@ -10,8 +11,16 @@ return {
     },
     config = function()
         local cmp = require("cmp")
-        local icons = require("lucas.icons").kind
-
+        -- local icons = require("lucas.icons").kind
+        -- function format(_, item)
+        --     print("hola")
+        --     -- if icons[item.kind] then
+        --     item.kind = icons[item.kind] .. " hola " .. item.kind
+        --     -- end
+        --     item.kind = "hola"
+        --     return item
+        -- end
+        --
         cmp.setup({
             window = {
                 completion = cmp.config.window.bordered({
@@ -55,15 +64,18 @@ return {
                 { name = "tmux" },
             }),
             formatting = {
-                fields = { "kind", "abbr", "menu" },
-                format = function(_, item)
-                    -- if icons[item.kind] then
-                    item.kind = icons[item.kind] .. " hola " .. item.kind
-                    -- end
-                    item.kind = "hola"
-                    return item
+                expandable_indicator = true,
+                fields = { 'abbr', 'kind', 'menu' },
+                format = function(_, vim_item)
+                    vim_item.kind = string.format("%s", "L")
+                    return vim_item
                 end,
-            },
+            }, --     {
+            --     fields = { "kind", "abbr", "menu" },
+            --     format = function (entry, buff)
+            --         print(buff)
+            --     end
+            -- },
             experimental = {
                 ghost_text = false,
                 native_menu = false,

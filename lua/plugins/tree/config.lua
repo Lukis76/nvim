@@ -1,3 +1,5 @@
+local icons = require("lucas.icons")
+
 return {
     auto_reload_on_write = false,
     disable_netrw = true,
@@ -7,11 +9,11 @@ return {
     -- ignore_buffer_on_setup = false,
     sort_by = "name",
     root_dirs = {},
-    prefer_startup_root = true,
+    prefer_startup_root = false,
     sync_root_with_cwd = true,
     reload_on_bufenter = false,
     respect_buf_cwd = false,
-    on_attach = "default",
+    on_attach = "disable",
     remove_keymaps = false,
     select_prompts = false,
     view = {
@@ -100,16 +102,18 @@ return {
         special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
         symlink_destination = true,
     },
-    hijack_directories = {
-        enable = true,
-        auto_open = true,
-    },
-    update_focused_file = {
-        enable = true,
-        debounce_delay = 15,
-        update_root = true,
-        ignore_list = {},
-    },
+    -- hijack_directories = {
+    --     enable = true,
+    --     debounce_delay = 15,
+    --     update_root = true,
+    --     ignore_list = {},
+    -- },
+    -- update_focused_file = {
+    --     enable = true,
+    --     debounce_delay = 15,
+    --     update_root = true,
+    --     ignore_list = {},
+    -- },
     diagnostics = {
         enable = true,
         show_on_dirs = false,
@@ -135,7 +139,7 @@ return {
     },
     filesystem_watchers = {
         enable = true,
-        debounce_delay = 100,
+        debounce_delay = 50,
         ignore_dirs = {},
     },
     git = {
@@ -167,7 +171,7 @@ return {
         },
         open_file = {
             quit_on_open = false,
-            resize_window = true,
+            resize_window = false,
             window_picker = {
                 enable = true,
                 picker = "default",
@@ -183,7 +187,7 @@ return {
         },
     },
     trash = {
-        cmd = "gio trash",
+        cmd = "trash",
         require_confirm = true,
     },
     live_filter = {

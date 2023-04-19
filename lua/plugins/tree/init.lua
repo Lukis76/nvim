@@ -1,5 +1,8 @@
 return {
     "nvim-tree/nvim-tree.lua",
+    lazy = true,
+    enabled = Default.plugins.tree,
+    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus", "NvimTreeFindFileToggle" },
     event = "VeryLazy",
     config = function()
         local config = require("plugins.tree.config")
