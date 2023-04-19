@@ -1,5 +1,14 @@
 return {
-  "numToStr/Comment.nvim",
-  keys = { { "gcc", desc = "Comment current line" }, { "gc", mode = "v", desc = "Comment selected text" } },
-  config = true,
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = {
+        hooks = {
+            pre = function()
+                require("ts_context_commentstring.internal").update_commentstring({})
+            end,
+        },
+    },
+    config = function(_, opts)
+        require("mini.comment").setup(opts)
+    end,
 }

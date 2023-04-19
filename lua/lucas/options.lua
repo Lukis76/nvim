@@ -1,8 +1,18 @@
 local g = vim.g
 local opt = vim.o
 
+-- g.netrw_banner = 0
+-- g.nvim_tree_disable_default_keybindings = 1
+g.nvim_tree_auto_close = 1
+opt.showtabline = 2
+
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
 g.mapleader = " "
 g.snippets = "luasnip"
+
+
 
 opt.cursorline = true
 opt.winbar = "%=%f"
@@ -41,8 +51,6 @@ opt.updatetime = 50
 opt.signcolumn = "yes"
 
 -- if vim.fn.has("nvim-0.9.0") == 1 then
-	opt.splitkeep = "screen"
-	opt.shortmess = "filnxtToOFWIcC"
+opt.splitkeep = "screen"
+opt.shortmess = "filnxtToOFWIcC"
 -- end
-
-

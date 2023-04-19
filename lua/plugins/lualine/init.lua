@@ -2,6 +2,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
+        local icons = require("lucas.icons")
         local colors = {
             black = "#202328",
             white = "#bbc2cf",
@@ -141,11 +142,10 @@ return {
             cond = conditions.buffer_not_empty,
             color = { fg = colors.white, gui = "bold" },
         })
-
         ins_left_c({
             "diff",
             -- Is it me or the symbol for modified us really weird
-            symbols = { added = " ", modified = " ", removed = " " }, -- 柳
+            symbols = { added = icons.git.Added, modified = icons.git.Modified, removed = icons.git.Removed }, -- 柳
             diff_color = {
                 added = { fg = colors.green },
                 modified = { fg = colors.orange },
@@ -157,7 +157,8 @@ return {
         ins_right_x({
             "diagnostics",
             sources = { "nvim_diagnostic" },
-            symbols = { error = " ", warn = " ", info = " " },
+            symbols = { error = icons.diagnostics.BoldError, warn = icons.diagnostics.BoldWarning,
+                info = icons.diagnostics.BoldInformation },
             diagnostics_color = {
                 color_error = { fg = colors.red },
                 color_warn = { fg = colors.yellow },

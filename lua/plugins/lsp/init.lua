@@ -23,6 +23,7 @@ return {
     config = function()
         local lsp   = require("lsp-zero").preset("recommended")
         local icons = require("lucas.icons")
+        local opts  = require("plugins.lsp.completition")
         lsp.ensure_installed({
             'tsserver',
             'rust_analyzer',
@@ -42,20 +43,67 @@ return {
 
 
         local cmp = require('cmp')
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-        local cmp_mappings = lsp.defaults.cmp_mappings({
-            ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-            ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-            ['<cr>'] = cmp.mapping.confirm({ select = true }),
-            ["<C-Space>"] = cmp.mapping.complete(),
-        })
+        -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        -- local cmp_mappings = lsp.defaults.cmp_mappings({
+        --     ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+        --     ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+        --     ['<cr>'] = cmp.mapping.confirm({ select = true }),
+        --     ["<C-Space>"] = cmp.mapping.complete(),
+        -- })
+        --
+        -- cmp_mappings['<Tab>'] = nil
+        -- cmp_mappings['<S-Tab>'] = nil
+        -- --
+        -- lsp.setup_nvim_cmp({
+        --     mapping = cmp_mappings
+        -- })
 
-        cmp_mappings['<Tab>'] = nil
-        cmp_mappings['<S-Tab>'] = nil
+        lsp.setup_nvim_cmp(
+            {
+                completion = {
+                    completeopt = "menu,menuone,noinsert",
+                },
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end,
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                    ["<S-CR>"] = cmp.mapping.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = true,
+                    }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                }),
+                sources = cmp.config.sources({
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "buffer" },
+                    { name = "path" },
+                }),
+                formatting = {
+                    format = function(_, item)
+                        local icons = require("lucas.icons").kind
+                        if icons[item.kind] then
+                            item.kind = icons[item.kind] .. " " .. item.kind
+                        end
+                        return item
+                    end,
+                },
+                experimental = {
+                    ghost_text = {
+                        hl_group = "LspCodeLens",
+                    },
+                },
+            }
 
-        lsp.setup_nvim_cmp({
-            mapping = cmp_mappings
-        })
+        )
 
         lsp.set_sign_icons({
             error = icons.diagnostics.Error,
