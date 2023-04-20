@@ -17,7 +17,7 @@ return {
     remove_keymaps = false,
     select_prompts = false,
     view = {
-        adaptive_size = false,
+        adaptive_size = true,
         centralize_selection = false,
         width = 30,
         hide_root_folder = false,
@@ -53,7 +53,7 @@ return {
         root_folder_label = ":t",
         indent_width = 2,
         indent_markers = {
-            enable = false,
+            enable = true,
             inline_arrows = true,
             icons = {
                 corner = "└",

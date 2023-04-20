@@ -18,6 +18,7 @@ api_map('n', '<C-l>', '<C-w>l', { noremap = true })
 api_map('n', '<C-j', '<C-w>j', { noremap = true })
 api_map('n', '<C-k>', '<C-w>k', { noremap = true })
 
+api_map("n", "<S-|>", ":NvimTreeToggle<cr>", { noremap = true })
 
 
 api_map('n', "<S-j>", ':BufferLineCycleNext<CR>', { silent = true, noremap = true })
