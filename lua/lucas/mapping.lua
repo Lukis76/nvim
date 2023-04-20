@@ -32,6 +32,20 @@ api_map("n", "<leader>efi", ":NvimTreeFindFile<cr>", { silent = true, noremap = 
 api_map("n", "<leader>eco", ":NvimTreeCollapse<cr>", { silent = true, noremap = true })
 
 
+-- toggle trem
+function _G.set_terminal_keymaps()
+    local opt = { buffer = 0 }
+    map('t', '<esc>', [[<C-\><C-n>]], opt)
+    map('t', 'jk', [[<C-\><C-n>]], opt)
+    map('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opt)
+    map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opt)
+    map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opt)
+    map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opt)
+    map('t', '<C-w>', [[<C-\><C-n><C-w>]], opt)
+end
+
+
+
 function M.lsp_set_keymap(bufnr)
     local opts = { buffer = bufnr, remap = false }
 
