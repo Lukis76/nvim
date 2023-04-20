@@ -41,7 +41,8 @@ local opts = {
 
 function M.setup()
     local telescope = require("telescope")
-    local builtin = telescope.builtin
+    local builtin = require("telescope.builtin")
+
     builtin.grep = function()
         local grep = "Grep" .. " " .. icons.ui.Select .. " "
         builtin.grep_string({ search = vim.fn.input(grep) })
