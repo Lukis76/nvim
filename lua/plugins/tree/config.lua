@@ -1,6 +1,7 @@
 local icons = require("lucas.icons")
+local M = {}
 
-return {
+local opts = {
     auto_reload_on_write = false,
     disable_netrw = true,
     hijack_cursor = true,
@@ -234,3 +235,11 @@ return {
         args = {},
     },
 }
+
+
+
+function M.setup()
+    require("nvim-tree").setup(opts)
+end
+
+return M

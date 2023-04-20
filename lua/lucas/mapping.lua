@@ -12,20 +12,24 @@ function close_and_last_buffer()
         vim.cmd('buffer ' .. last_bufnr)
     end
 end
-
+-- cursor motion
 api_map('n', '<C-h>', '<C-w>h', { noremap = true })
 api_map('n', '<C-l>', '<C-w>l', { noremap = true })
 api_map('n', '<C-j', '<C-w>j', { noremap = true })
 api_map('n', '<C-k>', '<C-w>k', { noremap = true })
 
-api_map("n", "<S-|>", ":NvimTreeToggle<cr>", { noremap = true })
 
-
+-- buffer line
 api_map('n', "<S-j>", ':BufferLineCycleNext<CR>', { silent = true, noremap = true })
 api_map('n', "<S-h>", ':BufferLineCyclePrev<CR>', { silent = true, noremap = true })
-
 api_map('n', '<S-x>', ":lua close_and_last_buffer()<CR>", { silent = true, noremap = true })
 
+-- tree mapping
+api_map("n", "<S-tab>", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
+-- api_map("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
+api_map("n", "<leader>efo", ":NvimTreeFocus<cr>", { silent = true, noremap = true })
+api_map("n", "<leader>efi", ":NvimTreeFindFile<cr>", { silent = true, noremap = true })
+api_map("n", "<leader>eco", ":NvimTreeCollapse<cr>", { silent = true, noremap = true })
 
 
 function M.lsp_set_keymap(bufnr)
