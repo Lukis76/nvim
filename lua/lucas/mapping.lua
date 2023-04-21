@@ -2,6 +2,7 @@ local M = {}
 
 local map = vim.keymap.set
 local api_map = vim.api.nvim_set_keymap
+local api_buf_map = vim.api.nvim_buf_set_keymap
 
 
 function close_and_last_buffer()
@@ -34,14 +35,14 @@ api_map("n", "<leader>eco", ":NvimTreeCollapse<cr>", { silent = true, noremap = 
 
 -- toggle trem
 function _G.set_terminal_keymaps()
-    local opt = { buffer = 0 }
-    map('t', '<esc>', [[<C-\><C-n>]], opt)
-    map('t', 'jk', [[<C-\><C-n>]], opt)
-    map('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opt)
-    map('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opt)
-    map('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opt)
-    map('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opt)
-    map('t', '<C-w>', [[<C-\><C-n><C-w>]], opt)
+    local opt = { noremap = true }
+    api_buf_map(0, 't', '<esc>', [[<C-\><C-n>]], opt)
+    api_buf_map(0, 't', 'jk', [[<C-\><C-n>]], opt)
+    api_buf_map(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opt)
+    api_buf_map(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opt)
+    api_buf_map(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opt)
+    api_buf_map(0, 't', '<C-l>', [[<C-\><C-n><C-W>v]], opt)
+    api_buf_map(0, 't', '<C-w>', [[<C-\><C-n><C-w>]], opt)
 end
 
 

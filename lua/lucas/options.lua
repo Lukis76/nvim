@@ -14,13 +14,13 @@ g.snippets = "luasnip"
 
 
 
-opt.cursorline = true
+opt.cursorline = true   -- resaltadode la linea dondes esta el cursor
 -- opt.winbar = "%=%f"
-opt.mouse = "a"
-opt.number = true
-opt.relativenumber = true
+opt.mouse = "a"   -- podemos habilitar el el mouse o desabilitar
+opt.number = true   --numero de linea en el left de la window
+opt.relativenumber = true    -- numero de linea con respepecto al la posocion del cursor
 opt.conceallevel = 3
-opt.hidden = true
+opt.hidden = true   --impoertantes para que las terminales guarden el estado al cerrarlas
 opt.expandtab = true
 opt.tabstop = 4
 opt.softtabstop = 4
