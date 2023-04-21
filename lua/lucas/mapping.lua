@@ -1,16 +1,19 @@
 local M = {}
 
+
+local cmd = vim.cmd
+local buff = vim.fn.bufnr
 local map = vim.keymap.set
 local api_map = vim.api.nvim_set_keymap
 local api_buf_map = vim.api.nvim_buf_set_keymap
 
 
 function close_and_last_buffer()
-    local current_bufnr = vim.fn.bufnr('%')
-    local last_bufnr = vim.fn.bufnr('#')
-    vim.cmd('bd')
+    local current_bufnr = buff('%')
+    local last_bufnr = buff('#')
+    cmd('bd')
     if last_bufnr ~= current_bufnr then
-        vim.cmd('buffer ' .. last_bufnr)
+        cmd('buffer ' .. last_bufnr)
     end
 end
 -- cursor motion
@@ -41,10 +44,9 @@ function _G.set_terminal_keymaps()
     api_buf_map(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opt)
     api_buf_map(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opt)
     api_buf_map(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opt)
-    api_buf_map(0, 't', '<C-l>', [[<C-\><C-n><C-W>v]], opt)
+    api_buf_map(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opt)
     api_buf_map(0, 't', '<C-w>', [[<C-\><C-n><C-w>]], opt)
 end
-
 
 
 function M.lsp_set_keymap(bufnr)

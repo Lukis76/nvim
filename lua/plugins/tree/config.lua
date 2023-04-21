@@ -100,7 +100,7 @@ local opts = {
                 },
             },
         },
-        special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+        special_files = {}, -- { "Cargo.toml", "Makefile", "README.md", "readme.md" },
         symlink_destination = true,
     },
     -- hijack_directories = {

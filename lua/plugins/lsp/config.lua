@@ -16,6 +16,17 @@ function M.setup()
     })
 
     lsp.setup_nvim_cmp({
+        window = {
+            border = "reounded",
+            -- completion = cmp.config.window.bordered({
+            --     border = "rounded",
+            --     winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+            -- }),
+            -- documentation = cmp.config.window.bordered({
+            --     border = "rounded",
+            --     winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+            -- }),
+        },
         formatting = {
             expandable_indicator = true,
             fields = { 'abbr', 'kind', 'menu' },
