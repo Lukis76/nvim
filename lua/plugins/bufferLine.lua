@@ -1,8 +1,6 @@
 return {
     'akinsho/bufferline.nvim',
-    -- event = "VeryLazy",
-    lazy = false,
-    enabled = Default.plugins.bufferLine,
+    -- event = "User FileOpened",
     config = function()
         require("bufferline").setup({})
     end

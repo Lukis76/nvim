@@ -42,6 +42,7 @@ local opts = {
 function M.setup()
     local telescope = require("telescope")
     local builtin = require("telescope.builtin")
+    telescope.load_extension("projects")
 
     builtin.grep = function()
         local grep = "Grep" .. " " .. icons.ui.Select .. " "

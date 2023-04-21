@@ -1,6 +1,6 @@
 return {
     "folke/which-key.nvim",
-    -- cmd = "Which-Key",
+    cmd = "WhichKey",
     event = "VeryLazy",
     config = function()
         require("plugins.whichkey.config").setup()

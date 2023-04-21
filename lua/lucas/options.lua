@@ -16,7 +16,7 @@ g.snippets = "luasnip"
 
 opt.cursorline = true
 -- opt.winbar = "%=%f"
-opt.mouse = false
+opt.mouse = "a"
 opt.number = true
 opt.relativenumber = true
 opt.conceallevel = 3
