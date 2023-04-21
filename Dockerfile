@@ -21,15 +21,15 @@ run apk add \
 
 # ENV PATH="/root/.cargo/bin:${PATH}"
 
-# RUN mkdir -p ~/.config \
-#   && mkdir -p ~/.code \
-#   && mkdir -p ~/.code/plugins
+RUN mkdir -p ~/.config/nvim/ \
+  && mkdir -p ~/.code \
+  && mkdir -p ~/.code/plugins
 
 # directorio de extraccion
 WORKDIR /root/.config/nvim
 
 # directorio de destino
-COPY ./nvim .
+COPY . .
 
 VOLUME ~/.config/nvim
 
