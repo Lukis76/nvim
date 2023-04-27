@@ -16,12 +16,16 @@ function close_and_last_buffer()
         cmd('buffer ' .. last_bufnr)
     end
 end
+
 -- cursor motion
 api_map('n', '<C-h>', '<C-w>h', { noremap = true })
 api_map('n', '<C-l>', '<C-w>l', { noremap = true })
 api_map('n', '<C-j', '<C-w>j', { noremap = true })
 api_map('n', '<C-k>', '<C-w>k', { noremap = true })
 
+
+--lsp format
+api_map('n', "<leader>lf", ':Format<CR>', { silent = true, noremap = true })
 
 -- buffer line
 api_map('n', "<S-j>", ':BufferLineCycleNext<CR>', { silent = true, noremap = true })
@@ -47,7 +51,6 @@ function _G.set_terminal_keymaps()
     api_buf_map(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opt)
     api_buf_map(0, 't', '<C-w>', [[<C-\><C-n><C-w>]], opt)
 end
-
 
 function M.lsp_set_keymap(bufnr)
     local opts = { buffer = bufnr, remap = false }

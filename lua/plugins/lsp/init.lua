@@ -1,28 +1,30 @@
+-- NOTE: This is where your plugins related to LSP can be installed.
+--  The configuration is done below. Search for lspconfig to find it below.
 return {
-    "VonHeikemen/lsp-zero.nvim",
-    event = "VeryLazy",
-    branch = "v2.x",
-    dependencies = {
-        -- LSP Support
-        { "neovim/nvim-lspconfig" },                     -- Required
-        { "williamboman/mason.nvim" },                   -- Optional
-        { "williamboman/mason-lspconfig.nvim" },         -- Optional
-        { "WhoIsSethDaniel/mason-tool-installer.nvim" }, -- Optional
+  -- LSP Configuration & Plugins
+  'neovim/nvim-lspconfig',
+  dependencies = {
+    -- Automatically install LSPs to stdpath for neovim
+    { 'williamboman/mason.nvim', config = true },
+    'williamboman/mason-lspconfig.nvim',
 
-        -- Autocompletion
-        { "hrsh7th/nvim-cmp" },         -- Required
-        { "hrsh7th/cmp-nvim-lsp" },     -- Required
-        { "hrsh7th/cmp-buffer" },       -- Optional
-        { "hrsh7th/cmp-path" },         -- Optional
-        { "saadparwaiz1/cmp_luasnip" }, -- Optional
-        { "hrsh7th/cmp-nvim-lua" },     -- Optional
-        {"hrsh7th/cmp-cmdline"},        -- Optional
+    -- Useful status updates for LSP
+    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+    { 'j-hui/fidget.nvim',       opts = { experimental = { pathStrict = true } } },
 
-        -- Snippets
-        { "L3MON4D3/LuaSnip" },             -- Required
-        { "rafamadriz/friendly-snippets" }, -- Optional
-    },
-    config = function()
-        require("plugins.lsp.config").setup()
+    -- Additional lua configuration, makes nvim stuff amazing!
+    'folke/neodev.nvim',
+    "jose-elias-alvarez/typescript.nvim",
+    { "jose-elias-alvarez/null-ls.nvim"},
+    init = function()
+      require("lazyvim.util").on_attach(function(_, buffer)
+        -- stylua: ignore
+        vim.keymap.set("n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+        vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+      end)
     end,
+  },
+  config = function()
+    require("plugins.lsp.config").setup()
+  end
 }

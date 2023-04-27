@@ -1,8 +1,8 @@
 local g = vim.g
 local opt = vim.o
 
--- g.netrw_banner = 0
--- g.nvim_tree_disable_default_keybindings = 1
+g.netrw_banner = 0
+g.nvim_tree_disable_default_keybindings = 1
 g.nvim_tree_auto_close = 1
 opt.showtabline = 2
 
@@ -24,7 +24,7 @@ opt.hidden = true   --impoertantes para que las terminales guarden el estado al 
 opt.expandtab = true
 opt.tabstop = 4
 opt.softtabstop = 4
-opt.shiftwidth = 4
+opt.shiftwidth = 2
 opt.smartindent = true
 opt.errorbells = false
 opt.wrap = false

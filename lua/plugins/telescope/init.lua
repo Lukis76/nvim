@@ -1,28 +1,28 @@
-return {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-lua/popup.nvim" },
-        { "nvim-telescope/telescope-fzy-native.nvim" },
-        { "nvim-tree/nvim-web-devicons" },
-        { "nvim-telescope/telescope-file-browser.nvim" },
-        { "nvim-telescope/telescope-ui-select.nvim" },
-        {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "make",
-            dependencies = {
-                "junegunn/fzf.vim",
-                dependencies = {
-                    {
-                        "tpope/vim-dispatch",
-                        cmd = { "Make", "Dispatch" },
-                    },
-                },
-            },
-        },
-    },
-    event = "VeryLazy",
-    config = function()
-        require("plugins.telescope.config").setup()
-    end,
-}
+ return {
+     "nvim-telescope/telescope.nvim",
+     dependencies = {
+         { "nvim-lua/plenary.nvim" },
+         { "nvim-lua/popup.nvim" },
+         { "nvim-telescope/telescope-fzy-native.nvim" },
+         { "nvim-tree/nvim-web-devicons" },
+         { "nvim-telescope/telescope-file-browser.nvim" },
+         { "nvim-telescope/telescope-ui-select.nvim" },
+         {
+             "nvim-telescope/telescope-fzf-native.nvim",
+             build = "make",
+             dependencies = {
+                 "junegunn/fzf.vim",
+                 dependencies = {
+                     {
+                         "tpope/vim-dispatch",
+                         cmd = { "Make", "Dispatch" },
+                     },
+                 },
+             },
+         },
+     },
+     event = "VeryLazy",
+     config = function()
+         require("plugins.telescope.config").setup()
+     end,
+ }
