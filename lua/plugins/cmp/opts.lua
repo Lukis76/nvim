@@ -2,15 +2,22 @@ local cmp = require("cmp")
 local icons = require("lucas.icons")
 local compare = require("cmp.config.compare")
 
+-- TODO: small name to entri.source.name or insert icons
+-- local surce_name = {
+-- }
+
 local formatting_style = {
   -- default fields order i.e completion word + item.kind + item.kind icons
   fields = { "abbr", "kind", "menu" },
-  format = function(_, item)
-    local icon = icons.kind[item.kind]
 
-    -- item.menu = "(" .. item.kind .. ")"
-    item.abbr = icon .. " " .. item.abbr
+  format = function(entry, item)
+    vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { fg = "Orange" })
+    local kind = item.kind
+    --     local source = entry.source.name
+    local icon = icons.kind[kind]
 
+    item.kind = icon .. item.kind
+    --     item.menu = kind .. " (" .. source .. ") "
     return item
   end,
 }
@@ -31,7 +38,7 @@ local set_mapping = {
   ["<CR>"] = cmp.mapping.confirm({
     behavior = cmp.ConfirmBehavior.Replace,
     select = true,
-  }),   -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.select_next_item()
@@ -106,11 +113,11 @@ local set_source = {
 local opts = {
   window = {
     completion = {
-      border = border "CmpBorder",
+      border = border("CmpBorder"),
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
     },
     documentation = {
-      border = border "CmpBorder",
+      border = border("CmpBorder"),
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
     },
   },
@@ -129,13 +136,12 @@ local opts = {
       compare.locality,
       compare.sort_text,
       compare.length,
-      compare.order
-    }
+      compare.order,
+    },
   },
   formatting = formatting_style,
   mapping = set_mapping,
   sources = set_source,
 }
-
 
 return opts

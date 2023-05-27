@@ -47,22 +47,21 @@ function M:init()
   function UpdateActiveWin()
     K.active_window = vim.api.nvim_eval('bufname("%")')
     print(K.active_window)
---   if K.active_window ~= vim.api.nvim_eval('bufname("%")') then
---     K.plugins.lualine = false
---   else
---     K.plugins.lualine = true
---   end
+    --   if K.active_window ~= vim.api.nvim_eval('bufname("%")') then
+    --     K.plugins.lualine = false
+    --   else
+    --     K.plugins.lualine = true
+    --   end
   end
 
-
--- Función para activar o desactivar el plugin "lualine" en función de la ventana activa
-function ToggleLualine()
-  if K.active_window ~= vim.api.nvim_eval('bufname("%")') then
-    K.plugins.lualine = false
-  else
-    K.plugins.lualine = true
+  -- Función para activar o desactivar el plugin "lualine" en función de la ventana activa
+  function ToggleLualine()
+    if K.active_window ~= vim.api.nvim_eval('bufname("%")') then
+      K.plugins.lualine = false
+    else
+      K.plugins.lualine = true
+    end
   end
-end
 
   -- Ejecutar la función 'UpdateActiveWin' cada vez que cambie la ventana
   vim.api.nvim_exec(

@@ -115,7 +115,7 @@ local diagnostic = function()
       Error = icons.diagnostics.BoldError,
       Warn = icons.diagnostics.BoldWarning,
       Hint = icons.diagnostics.BoldHint,
-      Info = icons.diagnostics.BoldInformation
+      Info = icons.diagnostics.BoldInformation,
     }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
@@ -123,7 +123,6 @@ local diagnostic = function()
     end
   end
 end
-
 
 function M.setup()
   local neodev_ok, neodev = pcall(require, "neodev")
@@ -146,7 +145,7 @@ function M.setup()
           capabilities = capabilities,
           on_attach = on_attach,
           settings = servers[server_name],
-          handlers = handlers
+          handlers = handlers,
         })
       end,
     })

@@ -2,20 +2,24 @@
 --  The configuration is done below. Search for lspconfig to find it below.
 return {
   -- LSP Configuration & Plugins
-  'neovim/nvim-lspconfig',
+  "neovim/nvim-lspconfig",
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    { 'williamboman/mason.nvim', config = true },
-    'williamboman/mason-lspconfig.nvim',
+    {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    config = true
+},
+    "williamboman/mason-lspconfig.nvim",
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim',       opts = { experimental = { pathStrict = true } } },
+    { "j-hui/fidget.nvim",       opts = { experimental = { pathStrict = true } } },
 
     -- Additional lua configuration, makes nvim stuff amazing!
-    'folke/neodev.nvim',
+    "folke/neodev.nvim",
     "jose-elias-alvarez/typescript.nvim",
-    { "jose-elias-alvarez/null-ls.nvim"},
+    { "jose-elias-alvarez/null-ls.nvim" },
     init = function()
       require("lazyvim.util").on_attach(function(_, buffer)
         -- stylua: ignore
@@ -26,5 +30,5 @@ return {
   },
   config = function()
     require("plugins.lsp.config").setup()
-  end
+  end,
 }

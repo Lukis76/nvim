@@ -3,22 +3,22 @@ return {
     "bash",
     "css",
     "lua",
-    -- "go",
-    -- "gomod",
+    "go",
+    "gomod",
     "html",
     "javascript",
     "json",
     "markdown",
     -- "markdown_inline",
-    -- "nix",
-    -- "php",
-    -- "phpdoc",
+    "nix",
+    "php",
+    "phpdoc",
     "query",
     "rust",
-    -- "svelte",
+    "svelte",
     "typescript",
     "tsx",
-    -- "vim",
+    "vim",
     "yaml",
   },
   -- Habilita el resaltado de sintaxis mediante Treesitter.
@@ -29,7 +29,7 @@ return {
     additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
-    enable = false,
+    enable = true,
     keymaps = {
       init_selection = "gnn",
       node_incremental = "grn",
@@ -65,7 +65,7 @@ return {
   -- Habilita la indentación automática basada en la estructura
   -- del árbol de sintaxis del lenguaje. Se desactiva para los
   -- lenguajes YAML y Python.
-  indent = { enable = true, disable = { "yaml", "python" } },
+  indent = { enable = true },
   -- Desactiva la autocompletado de etiquetas HTML.
   autotag = { enable = true },
   textobjects = {

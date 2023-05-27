@@ -17,6 +17,11 @@ function close_and_last_buffer()
     end
 end
 
+
+api_map("n", "<leader>fc", ":lua require('telescope.builtin').find_files({prompt_title='Neovim Configuration', cwd='~/.config/nvim'})<CR>", { noremap = true, silent = true })
+
+
+
 -- cursor motion
 api_map('n', '<C-h>', '<C-w>h', { noremap = true })
 api_map('n', '<C-l>', '<C-w>l', { noremap = true })

@@ -22,8 +22,8 @@ opt.relativenumber = true    -- numero de linea con respepecto al la posocion de
 opt.conceallevel = 3
 opt.hidden = true   --impoertantes para que las terminales guarden el estado al cerrarlas
 opt.expandtab = true
-opt.tabstop = 4
-opt.softtabstop = 4
+opt.tabstop = 2
+opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.smartindent = true
 opt.errorbells = false
@@ -36,8 +36,8 @@ opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.termguicolors = true
-opt.scrolloff = 4
-opt.sidescrolloff = 4
+opt.scrolloff = 2
+opt.sidescrolloff = 2
 opt.showmode = false
 opt.clipboard = "unnamedplus"
 opt.splitbelow = true
@@ -54,3 +54,8 @@ opt.signcolumn = "yes"
 opt.splitkeep = "screen"
 opt.shortmess = "filnxtToOFWIcC"
 -- end
+
+
+
+
+

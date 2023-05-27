@@ -60,7 +60,7 @@ return {
     end,
     offsets = {
       {
-        filetype = "NvimTree",
+        filetype = "NvimTree", "neo-tree",
         text = "File Explorer", -- "File Explorer" | function ,
         -- text_align = -- "left" | "center" | "right"
         separator = true,

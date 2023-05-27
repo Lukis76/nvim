@@ -1,8 +1,7 @@
-
 return {
     "SmiteshP/nvim-navic",
-    event = "User FileOpened",
-    enabled = false,
+--     event = "User FileOpened",
+    enabled = K.plugins.navic,
     dependencies = {
         "neovim/nvim-lspconfig"
     },
