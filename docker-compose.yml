@@ -1,0 +1,14 @@
+version: '3'
+services:
+  neovim:
+    image: my-config-neovim:0.0.1
+    build:
+      context: .
+      dockerfile: dockerfile
+    
+    volumes:
+      - ./config/bak-neovim:/root/.config/nvim
+    tty: true
+
+
+

@@ -59,7 +59,7 @@ local buttons = function (dashboard)
         dashboard.button( "p", icons.ui.Project .. "  Projects ", "<CMD>Telescope projects<CR>"),
         dashboard.button( "r", icons.ui.History .. "  Recent files", ":Telescope oldfiles <CR>"),
         dashboard.button( "t", icons.ui.FindText .. "  Find Text", "<CMD>Telescope live_grep<CR>"),
-        -- dashboard.button( "c", icons.ui.Gear .. "  Configuration","<CMD>edit " .. require("lvim.config"):get_user_config_path() .. " <CR>),
+        -- dashboard.button( "c", icons.ui.Gear .. "  Configuration","<CMD>edit " .. require("lvim.config"):get_user_config_path() .. " <CR>"),
         dashboard.button( "q", icons.ui.Close .. "  Quit", "<CMD>quit<CR>"),
     }
 end
